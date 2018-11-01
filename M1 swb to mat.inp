@@ -1,0 +1,21 @@
+TITLE: restricted themes CLM with covariates
+DATA: 
+    FILE = Data.dat;
+VARIABLE: 
+    NAMES = nomem nohh mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18 
+            sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5 joblos13 joblos14
+            split13 split14 lftd nohh13 noki13 inc13 educ married gender age1 age2 paidw
+            noki14 inc14 noki15 inc15;
+USEVARIABLES = FMAT13 FSAT13 ;
+MISSING = all (-999);
+CLUSTER= nohh;
+DEFINE:
+FMAT13=(mat13_1+mat13_2+mat13_3+mat13_4+mat13_5+mat13_6+mat13_7+mat13_8+mat13_9+mat13_10
+        +mat13_11+mat13_12+mat13_13+mat13_14+mat13_15+mat13_16+mat13_17+mat13_18)/18;
+FSAT13=(sat13_1+sat13_2+sat13_3+sat13_4+sat13_5)/5;
+ANALYSIS:
+TYPE = COMPLEX;
+MODEL:
+FSAT13 ON FMAT13;
+OUTPUT:
+STANDARDIZED;

@@ -1,0 +1,305 @@
+TITLE: M4 Overall materialism and subjective well-being
+DATA: 
+    FILE = Data.dat;
+VARIABLE: 
+    NAMES = nomem nohh mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18 
+            sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5 joblos13 joblos14
+            split13 split14 lftd nohh13 noki13 inc13 educ married gender age1 age2 paidw
+            noki14 inc14 noki15 inc15;
+USEVARIABLES = mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18
+               sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5 noki13 noki14 noki15
+               married educ paidw gender age1 age2 inc13 inc14 inc15;
+MISSING = all (-999);
+CLUSTER= nohh;
+ANALYSIS:
+TYPE = COMPLEX;
+MODEL:
+!CFA wave 2013
+FSUCC13 BY mat13_1* (l1)
+           mat13_2  (l2)
+           mat13_3  (l3)
+           mat13_4  (l4)
+           mat13_5  (l5)
+           mat13_6  (l6);
+FCEN13 BY  mat13_7* (l7)
+          mat13_8  (l8)
+          mat13_9 (l9)
+          mat13_10  (l10)
+          mat13_11 (l11)
+          mat13_12  (l12)
+          mat13_13  (l13);
+FHAPP13 BY mat13_14* (l14)
+           mat13_15  (l15)
+           mat13_16  (l16)
+           mat13_17  (l17)
+           mat13_18  (l18);
+FNEG13 BY mat13_3@1
+          mat13_6@1
+          mat13_7@1
+          mat13_8@1
+          mat13_9@1 
+          mat13_13@1 
+          mat13_14@1 
+          mat13_16@1;
+FSUCC13@1 FCEN13@1 FHAPP13@1;
+FMAT13 BY FSUCC13* (ll1)
+          FCEN13 (ll2)
+          FHAPP13 (ll3);
+FMAT13@1;
+
+!CFA wave 2014
+FSUCC14 BY mat14_1* (l1)
+           mat14_2  (l2)
+           mat14_3  (l3)
+           mat14_4  (l4)
+           mat14_5  (l5)
+           mat14_6  (l6);
+FCEN14 BY  mat14_7* (l7)
+          mat14_8  (l8)
+          mat14_9  (l9)
+          mat14_10  (l10)
+          mat14_11  (l11)
+          mat14_12  (l12)
+          mat14_13  (l13);
+FHAPP14 BY mat14_14* (l14)
+           mat14_15  (l15)
+           mat14_16  (l16)
+           mat14_17  (l17)
+           mat14_18  (l18) ;
+FNEG14 BY mat14_3@1
+          mat14_6@1
+          mat14_7@1
+          mat14_8@1
+          mat14_9@1 
+          mat14_13@1 
+          mat14_14@1 
+          mat14_16@1;
+FMAT14 BY FSUCC14* (ll1)
+          FCEN14 (ll2)
+          FHAPP14 (ll3);
+FSUCC14@1 FCEN14@1 FHAPP14@1 FMAT14@1;
+
+!CFA wave 2015
+FSUCC15 BY mat15_1* (l1) 
+           mat15_2  (l2)
+           mat15_3  (l3)
+           mat15_4  (l4)
+           mat15_5  (l5)
+           mat15_6  (l6);
+FCEN15 BY  mat15_7* (l7)
+          mat15_8  (l8)
+          mat15_9  (l9)
+          mat15_10  (l10)
+          mat15_11  (l11)
+          mat15_12  (l12)
+          mat15_13  (l13);
+FHAPP15 BY mat15_14* (l14)
+           mat15_15  (l15)
+           mat15_16  (l16)
+           mat15_17  (l17)
+           mat15_18  (l18);
+FNEG15 BY mat15_3@1
+          mat15_6@1
+          mat15_7@1
+          mat15_8@1
+          mat15_9@1 
+          mat15_13@1 
+          mat15_14@1 
+          mat15_16@1;
+FMAT15 BY FSUCC15* (ll1)
+          FCEN15 (ll2)
+          FHAPP15 (ll3);
+FSUCC15@1 FCEN15@1 FHAPP15@1 FMAT15@1;
+
+FMAT13 FMAT14 FMAT15 WITH FNEG13@0 FNEG14@0 FNEG15@0;
+
+[mat13_1 mat14_1 mat15_1] (a);
+[mat13_2 mat14_2 mat15_2] (b);
+[mat13_3 mat14_3 mat15_3] (c);
+[mat13_4 mat14_4 mat15_4] (d);
+[mat13_5 mat14_5 mat15_5] (e);
+[mat13_6 mat14_6 mat15_6] (f);
+[mat13_7 mat14_7 mat15_7] (g);
+[mat13_8 mat14_8 mat15_8] (h);
+[mat13_9 mat14_9 mat15_9] (i);
+[mat13_10 mat14_10 mat15_10] (j);
+[mat13_11 mat14_11 mat15_11] (k);
+[mat13_12 mat14_12 mat15_12] (l);
+[mat13_13 mat14_13 mat15_13] (m);
+[mat13_14 mat14_14 mat15_14] (n);
+[mat13_15 mat14_15 mat15_15] (o);
+[mat13_16 mat14_16 mat15_16] (p);
+[mat13_17 mat14_17 mat15_17] (q);
+[mat13_18 mat14_18 mat15_18] (r);
+
+mat13_1 mat14_1 mat15_1 (var1);
+mat13_2 mat14_2 mat15_2 (var2);
+mat13_3 mat14_3 mat15_3 (var3);
+mat13_4 mat14_4 mat15_4 (var4);
+mat13_5 mat14_5 mat15_5 (var5);
+mat13_6 mat14_6 mat15_6 (var6);
+mat13_7 mat14_7 mat15_7 (var7);
+mat13_8 mat14_8 mat15_8 (var8);
+mat13_9 mat14_9 mat15_9 (var9);
+mat13_10 mat14_10 mat15_10 (var10);
+mat13_11 mat14_11 mat15_11 (var11);
+mat13_12 mat14_12 mat15_12 (var12);
+mat13_13 mat14_13 mat15_13 (var13);
+mat13_14 mat14_14 mat15_14 (var14);
+mat13_15 mat14_15 mat15_15 (var15);
+mat13_16 mat14_16 mat15_16 (var16);
+mat13_17 mat14_17 mat15_17 (var17);
+mat13_18 mat14_18 mat15_18 (var18);
+
+mat13_1 WITH mat14_1 mat15_1;
+mat14_1 WITH mat15_1;
+
+mat13_2 WITH mat14_2 mat15_2;
+mat14_2 WITH mat15_2;
+
+mat13_3 WITH mat14_3 mat15_3;
+mat14_3 WITH mat15_3;
+
+mat13_4 WITH mat14_4 mat15_4;
+mat14_4 WITH mat15_4;
+
+mat13_5 WITH mat14_5 mat15_5;
+mat14_5 WITH mat15_5;
+
+mat13_6 WITH mat14_6 mat15_6;
+mat14_6 WITH mat15_6;
+
+mat13_7 WITH mat14_7 mat15_7;
+mat14_7 WITH mat15_7;
+
+mat13_8 WITH mat14_8 mat15_8;
+mat14_8 WITH mat15_8;
+
+mat13_9 WITH mat14_9 mat15_9;
+mat14_9 WITH mat15_9;
+
+mat13_10 WITH mat14_10 mat15_10;
+mat14_10 WITH mat15_10;
+
+mat13_11 WITH mat14_11 mat15_11;
+mat14_11 WITH mat15_11;
+
+mat13_12 WITH mat14_12 mat15_12;
+mat14_12 WITH mat15_12;
+
+mat13_13 WITH mat14_13 mat15_13;
+mat14_13 WITH mat15_13;
+
+mat13_14 WITH mat14_14 mat15_14;
+mat14_14 WITH mat15_14;
+
+mat13_15 WITH mat14_15 mat15_15;
+mat14_15 WITH mat15_15;
+
+mat13_16 WITH mat14_16 mat15_16;
+mat14_16 WITH mat15_16;
+
+mat13_17 WITH mat14_17 mat15_17;
+mat14_17 WITH mat15_17;
+
+mat13_18 WITH mat14_18 mat15_18;
+mat14_18 WITH mat15_18;
+
+!CFA wave 2013
+FSAT13 BY sat13_1* (ls1)
+           sat13_2 (ls2)
+           sat13_3 (ls3)
+           sat13_4 (ls4)
+           sat13_5 (ls5);
+FSAT13@1;
+
+!CFA wave 2014
+FSAT14 BY sat14_1* (ls1)
+           sat14_2 (ls2)
+           sat14_3 (ls3)
+           sat14_4 (ls4)
+           sat14_5 (ls5);
+FSAT14@1;
+
+!CFA wave 2015
+FSAT15 BY sat15_1* (ls1)
+           sat15_2 (ls2)
+           sat15_3 (ls3)
+           sat15_4 (ls4)
+           sat15_5 (ls5);
+FSAT15@1;
+
+[sat13_1 sat14_1 sat15_1] (za);
+[sat13_2 sat14_2 sat15_2] (zb);
+[sat13_3 sat14_3 sat15_3] (zc);
+[sat13_4 sat14_4 sat15_4] (zd);
+[sat13_5 sat14_5 sat15_5] (ze);
+
+sat13_1 sat14_1 sat15_1 (aa);
+sat13_2 sat14_2 sat15_2 (bb);
+sat13_3 sat14_3 sat15_3 (cc);
+sat13_4 sat14_4 sat15_4 (dd);
+sat13_5 sat14_5 sat15_5 (ee);
+
+sat13_1 WITH sat14_1 sat15_1;
+sat14_1 WITH sat15_1;
+
+sat13_2 WITH sat14_2 sat15_2;
+sat14_2 WITH sat15_2;
+
+sat13_3 WITH sat14_3 sat15_3;
+sat14_3 WITH sat15_3;
+
+sat13_4 WITH sat14_4 sat15_4;
+sat14_4 WITH sat15_4;
+
+sat13_5 WITH sat14_5 sat15_5;
+sat14_5 WITH sat15_5;
+
+!STRUCTURAL PART
+FMAT15 ON FMAT14 (a1)
+          FSAT14 (b1)
+          inc15 (cov1)
+           noki15 (cov2);
+FMAT14 ON FMAT13 (a1)
+          FSAT13 (b1)
+          inc14 (cov1)
+           noki14 (cov2);
+FMAT13 ON age1
+           age2
+           educ
+           gender
+           inc13 (cov1)
+           noki13 (cov2)
+           married 
+           paidw ;
+
+FSAT15 ON FSAT14 (a2)
+          FMAT14 (b2)
+           inc15 (scov1)
+           noki15 (scov2);
+
+FSAT14 ON FSAT13 (a2)
+          FMAT13 (b2)
+           inc14 (scov1)
+           noki14 (scov2);
+FSAT13 ON age1
+          age2 
+          educ
+          gender
+           inc13 (scov1)
+           noki13 (scov2)
+           married 
+           paidw ;
+
+FSAT13 FMAT13 FMAT14 FMAT15 WITH FNEG13@0 FNEG14@0 FNEG15@0;
+
+  FMAT15 WITH FSAT15;
+  FMAT14 WITH FSAT14;
+  FMAT13 WITH FSAT13;
+
+MODEL CONSTRAINT:
+NEW(diff);
+diff=b2-b1;
+OUTPUT:
+STANDARDIZED;
