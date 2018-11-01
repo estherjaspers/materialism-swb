@@ -1,0 +1,189 @@
+TITLE: configural invariance
+DATA: 
+    FILE = Data.dat;
+VARIABLE: 
+    NAMES = nomem nohh mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18 
+            sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5 joblos13 joblos14
+            split13 split14 lftd nohh13 noki13 inc13 educ married gender age1 age2 paidw
+            noki14 inc14 noki15 inc15;
+USEVARIABLES = mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18;    
+MISSING = all (-999);
+CLUSTER= nohh;
+ANALYSIS:
+TYPE=COMPLEX;
+MODEL:
+!CFA wave 2013
+FSUCC13 BY mat13_1* !(l1)
+           mat13_2 !(l2)
+           mat13_3 !(l3)
+           mat13_4 !(l4)
+           mat13_5 !(l5)
+           mat13_6 !(l6)
+           ;
+FCEN13 BY mat13_7* !(l7)
+          mat13_8 !(l8)
+          mat13_9 !(l9)
+          mat13_10 !(l10)
+          mat13_11 !(l11)
+          mat13_12 !(l12)
+          mat13_13 !(l13)
+          ;
+FHAPP13 BY mat13_14* !(l14)
+           mat13_15 !(l15)
+           mat13_16 !(l16)
+           mat13_17 !(l17)
+           mat13_18 !(l18)
+           ;
+FMAT13 BY FSUCC13* !(ll1)  
+          FCEN13 !(ll2)
+          FHAPP13 !(ll3)
+          ;
+FNEG13 BY mat13_3@1
+          mat13_6@1
+          mat13_7@1
+          mat13_8@1
+          mat13_9@1 
+          mat13_13@1 
+          mat13_14@1 
+          mat13_16@1;
+FSUCC13@1; FCEN13@1; FHAPP13@1;
+FMAT13@1;
+
+!CFA wave 2014
+FSUCC14 BY mat14_1* !(l1)
+           mat14_2 !(l2)
+           mat14_3 !(l3)
+           mat14_4 !(l4)
+           mat14_5 !(l5)
+           mat14_6 !(l6)
+           ;
+FCEN14 BY mat14_7* !(l7) 
+          mat14_8 !(l8)
+          mat14_9 !(l9)
+          mat14_10 !(l10)
+          mat14_11 !(l11)
+          mat14_12 !(l12)
+          mat14_13 !(l13)
+          ;
+FHAPP14 BY mat14_14* !(l14) 
+           mat14_15 !(l15)
+           mat14_16 !(l16)
+           mat14_17 !(l17)
+           mat14_18 !(l18)
+           ;
+FMAT14 BY FSUCC14* !(ll1)
+          FCEN14 !(ll2)
+          FHAPP14 !(ll3)
+          ;
+FNEG14 BY mat14_3@1
+          mat14_6@1
+          mat14_7@1
+          mat14_8@1
+          mat14_9@1 
+          mat14_13@1 
+          mat14_14@1 
+          mat14_16@1;
+FSUCC14@1; FCEN14@1; FHAPP14@1; 
+FMAT14@1;
+
+!CFA wave 2015
+FSUCC15 BY mat15_1* !(l1) 
+           mat15_2 !(l2)
+           mat15_3 !(l3)
+           mat15_4 !(l4)
+           mat15_5 !(l5)
+           mat15_6 !(l6)
+           ;
+FCEN15 BY mat15_7* !(l7) 
+          mat15_8 !(l8)
+          mat15_9 !(l9)
+          mat15_10 !(l10)
+          mat15_11 !(l11)
+          mat15_12 !(l12)
+          mat15_13 !(l13)
+          ;
+FHAPP15 BY mat15_14* !(l14)
+           mat15_15 !(l15)
+           mat15_16 !(l16)
+           mat15_17 !(l17)
+           mat15_18 !(l18)
+           ;
+FMAT15 BY FSUCC15* !(ll1)
+          FCEN15 !(ll2)
+          FHAPP15 !(ll3)
+          ;
+FNEG15 BY mat15_3@1
+          mat15_6@1
+          mat15_7@1
+          mat15_8@1
+          mat15_9@1 
+          mat15_13@1 
+          mat15_14@1 
+          mat15_16@1;
+FSUCC15@1; FCEN15@1; FHAPP15@1;
+FMAT15@1;
+
+FMAT13 FMAT14 FMAT15 WITH FNEG13@0 FNEG14@0 FNEG15@0;
+
+ FSUCC13 WITH FSUCC14 FSUCC15;
+ FSUCC14 WITH FSUCC15;
+
+ FCEN13 WITH FCEN14 FCEN15;
+ FCEN14 WITH FCEN15;
+
+ FHAPP13 WITH FHAPP14 FHAPP15;
+ FHAPP14 WITH FHAPP15;
+
+mat13_1 WITH mat14_1 mat15_1;
+mat14_1 WITH mat15_1;
+
+mat13_2 WITH mat14_2 mat15_2;
+mat14_2 WITH mat15_2;
+
+mat13_3 WITH mat14_3 mat15_3;
+mat14_3 WITH mat15_3;
+
+mat13_4 WITH mat14_4 mat15_4;
+mat14_4 WITH mat15_4;
+
+mat13_5 WITH mat14_5 mat15_5;
+mat14_5 WITH mat15_5;
+
+mat13_6 WITH mat14_6 mat15_6;
+mat14_6 WITH mat15_6;
+
+mat13_7 WITH mat14_7 mat15_7;
+mat14_7 WITH mat15_7;
+
+mat13_8 WITH mat14_8 mat15_8;
+mat14_8 WITH mat15_8;
+
+mat13_9 WITH mat14_9 mat15_9;
+mat14_9 WITH mat15_9;
+
+mat13_10 WITH mat14_10 mat15_10;
+mat14_10 WITH mat15_10;
+
+mat13_11 WITH mat14_11 mat15_11;
+mat14_11 WITH mat15_11;
+
+mat13_12 WITH mat14_12 mat15_12;
+mat14_12 WITH mat15_12;
+
+mat13_13 WITH mat14_13 mat15_13;
+mat14_13 WITH mat15_13;
+
+mat13_14 WITH mat14_14 mat15_14;
+mat14_14 WITH mat15_14;
+
+mat13_15 WITH mat14_15 mat15_15;
+mat14_15 WITH mat15_15;
+
+mat13_16 WITH mat14_16 mat15_16;
+mat14_16 WITH mat15_16;
+
+mat13_17 WITH mat14_17 mat15_17;
+mat14_17 WITH mat15_17;
+
+mat13_18 WITH mat14_18 mat15_18;
+mat14_18 WITH mat15_18;

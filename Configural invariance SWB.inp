@@ -1,0 +1,56 @@
+TITLE: configural invariance
+DATA: 
+    FILE = Data.dat;
+VARIABLE: 
+    NAMES = nomem nohh mat13_1-mat13_18 mat14_1-mat14_18 mat15_1-mat15_18 
+            sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5 joblos13 joblos14
+            split13 split14 lftd nohh13 noki13 inc13 educ married gender age1 age2 paidw
+            noki14 inc14 noki15 inc15;
+USEVARIABLES = sat13_1-sat13_5 sat14_1-sat14_5 sat15_1-sat15_5;    
+MISSING = all (-999);
+CLUSTER = nohh;
+ANALYSIS:
+TYPE=COMPLEX;
+MODEL:
+!CFA wave 2013
+FSAT13 BY sat13_1* !(l1)
+           sat13_2 !(l2)
+           sat13_3 !(l3)
+           sat13_4 !(l4)
+           sat13_5 !(l5)
+;
+FSAT13@1;
+
+!CFA wave 2014
+FSAT14 BY sat14_1* !(l1)
+           sat14_2 !(l2)
+           sat14_3 !(l3)
+           sat14_4 !(l4)
+           sat14_5 !(l5)
+;
+FSAT14@1;
+
+!CFA wave 2015
+FSAT15 BY sat15_1* !(l1) 
+           sat15_2 !(l2)
+           sat15_3 !(l3)
+           sat15_4 !(l4)
+           sat15_5 !(l5)
+;
+FSAT15@1;
+
+sat13_1 WITH sat14_1 sat15_1;
+sat14_1 WITH sat15_1;
+
+sat13_2 WITH sat14_2 sat15_2;
+sat14_2 WITH sat15_2;
+
+sat13_3 WITH sat14_3 sat15_3;
+sat14_3 WITH sat15_3;
+
+sat13_4 WITH sat14_4 sat15_4;
+sat14_4 WITH sat15_4;
+
+sat13_5 WITH sat14_5 sat15_5;
+sat14_5 WITH sat15_5;
+
